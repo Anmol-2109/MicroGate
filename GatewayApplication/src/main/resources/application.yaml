@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring :
+
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 3000
+        response-timeout: 30s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+  endpoint:
+    health:
+      show-details: always
+
+    gateway:
+      access: unrestricted
+
+  tracing:
+    sampling:
+      probability: 1.0
+
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+
+
+
+logging:
+  pattern:
+    level: "%5p [traceId=%X{traceId}]"
+
+jwt:
+  secretKey: jhdwkhfuyehfujsdbcheiufdchygkdwui783y4783u3iuhujebkjcbmjuyge7u3r9ihedikfh78ry3278
+
+  accessExpiration: 18000000
+
+  refreshExpiration: 2592000000
+
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 30s
+
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 30s
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    config-url: /swagger-config

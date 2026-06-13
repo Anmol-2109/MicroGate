@@ -1,0 +1,121 @@
+INSERT INTO services
+(
+    service_name,
+    instance_id,
+    service_url,
+    service_version,
+    status,
+    last_heartbeat,
+    created_at,
+    updated_at
+)
+VALUES
+(
+    'SERVICE-1',
+    'service1-a',
+    'http://localhost:8081',
+    'v1',
+    'UP',
+    NOW(),
+    NOW(),
+    NOW()
+);
+
+INSERT INTO services
+(
+    service_name,
+    instance_id,
+    service_url,
+    service_version,
+    status,
+    last_heartbeat,
+    created_at,
+    updated_at
+)
+VALUES
+(
+    'SERVICE-1',
+    'service1-b',
+    'http://localhost:8082',
+    'v1',
+    'UP',
+    NOW(),
+    NOW(),
+    NOW()
+);
+
+INSERT INTO services
+(
+    service_name,
+    instance_id,
+    service_url,
+    service_version,
+    status,
+    last_heartbeat,
+    created_at,
+    updated_at
+)
+VALUES
+(
+    'SERVICE-2',
+    'service2-a',
+    'http://localhost:8091',
+    'v1',
+    'UP',
+    NOW(),
+    NOW(),
+    NOW()
+);
+
+INSERT INTO services
+(
+    service_name,
+    instance_id,
+    service_url,
+    service_version,
+    status,
+    last_heartbeat,
+    created_at,
+    updated_at
+)
+VALUES
+(
+    'SERVICE-2',
+    'service2-b',
+    'http://localhost:8092',
+    'v1',
+    'UP',
+    NOW(),
+    NOW(),
+    NOW()
+);
+
+INSERT INTO routes
+(
+    path_pattern,
+    enabled,
+    service_name,
+    created_at
+)
+VALUES
+(
+    '/service1/**',
+    TRUE,
+    'SERVICE-1',
+    NOW()
+);
+
+INSERT INTO routes
+(
+    path_pattern,
+    enabled,
+    service_name,
+    created_at
+)
+VALUES
+(
+    '/service2/**',
+    TRUE,
+    'SERVICE-2',
+    NOW()
+);
