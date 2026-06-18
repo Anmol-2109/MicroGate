@@ -2,8 +2,10 @@ package com.Anmol.Gateway.RateLimit.Filter;
 
 
 
+import com.Anmol.Gateway.Metrics.GatewayMetrics;
 import com.Anmol.Gateway.RateLimit.Service.TokenBucketService;
 import com.Anmol.Gateway.Security.JwtPrincipal;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
@@ -24,6 +26,7 @@ public class RateLimitFilter
         implements WebFilter {
 
     private final TokenBucketService tokenBucketService;
+    private final MeterRegistry meterRegistry;
 
 //    @Override
 //    public Mono<Void> filter(
@@ -145,6 +148,10 @@ public class RateLimitFilter
                     .setStatusCode(
                             HttpStatus.TOO_MANY_REQUESTS
                     );
+
+            meterRegistry.counter(
+                    GatewayMetrics.RATE_LIMIT_REJECTED
+            ).increment();
 
             return exchange.getResponse()
                     .setComplete();

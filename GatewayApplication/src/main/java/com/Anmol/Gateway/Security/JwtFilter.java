@@ -1,6 +1,8 @@
 package com.Anmol.Gateway.Security;
 
 
+import com.Anmol.Gateway.Metrics.GatewayMetrics;
+import io.micrometer.core.instrument.MeterRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
@@ -21,6 +23,7 @@ import java.util.Collections;
 public class JwtFilter implements WebFilter {
 
     private final SecurityUtil securityUtil;
+    private final MeterRegistry meterRegistry;
 
     @Override
     public Mono<Void> filter(
@@ -110,6 +113,9 @@ public class JwtFilter implements WebFilter {
                     .setStatusCode(
                             org.springframework.http.HttpStatus.UNAUTHORIZED
                     );
+            meterRegistry.counter(
+                    GatewayMetrics.JWT_FAILURES
+            ).increment();
 
             return exchange.getResponse()
                     .setComplete();

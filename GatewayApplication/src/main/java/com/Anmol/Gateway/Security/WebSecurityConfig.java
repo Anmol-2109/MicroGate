@@ -45,7 +45,8 @@ public class WebSecurityConfig {
                         exchange
 
                                 .pathMatchers(
-                                        "/user/auth/**" , "/auth/**"
+                                        "/user/auth/**" , "/auth/**" ,     "/actuator/**"
+
                                 )
                                 .permitAll()
 
