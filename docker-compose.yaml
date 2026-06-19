@@ -1,0 +1,62 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+
+    environment:
+      MYSQL_ROOT_PASSWORD:  Admin@2109
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+
+  redis:
+    image: redis:7
+
+    container_name: redis
+
+    ports:
+      - "6379:6379"
+
+  gateway:
+    build: ./GatewayApplication
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - mysql
+
+  userservice:
+    build: ./userservice
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+    ports:
+      - "8083:8083"
+
+    depends_on:
+      - mysql
+      - redis
+
+  mock1:
+    build: ./mock-service1
+
+    ports:
+      - "8081:8081"
+
+  mock2:
+    build: ./mock-service2
+
+    ports:
+      - "8091:8091"
+
+volumes:
+  mysql_data:

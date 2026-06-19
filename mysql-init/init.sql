@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS gatewaydb;
+
+CREATE DATABASE IF NOT EXISTS gateway_users;
+
