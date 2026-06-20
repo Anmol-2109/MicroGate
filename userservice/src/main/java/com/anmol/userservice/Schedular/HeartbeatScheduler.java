@@ -7,6 +7,7 @@ package com.anmol.userservice.Schedular;
 import com.anmol.userservice.DTO.HeartbeatRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,10 @@ public class HeartbeatScheduler {
 
     private final RestTemplate restTemplate;
 
+    @Value("${gateway.base-url}")
+    private String gatewayBaseUrl;
+
+
     @Scheduled(fixedRate = 15000)
     public void sendHeartbeat() {
 
@@ -30,7 +35,7 @@ public class HeartbeatScheduler {
                     );
 
             restTemplate.postForObject(
-                    "http://localhost:8080/services/heartbeat",
+                    gatewayBaseUrl + "/services/heartbeat",
                     request,
                     Void.class
             );

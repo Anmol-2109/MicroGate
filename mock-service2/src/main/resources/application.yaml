@@ -1,6 +1,13 @@
 server:
   port: ${SERVER_PORT:8091}
 
+service:
+  host: localhost
+
+gateway:
+  base-url: http://localhost:8080
+
+
 springdoc:
   api-docs:
     path: /v3/api-docs

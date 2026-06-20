@@ -1,6 +1,12 @@
 server:
   port: ${SERVER_PORT:8083}
 
+service:
+  host: localhost
+
+gateway:
+  base-url: http://localhost:8080
+
 jwt:
   secretKey: jhdwkhfuyehfujsdbcheiufdchygkdwui783y4783u3iuhujebkjcbmjuyge7u3r9ihedikfh78ry3278
 

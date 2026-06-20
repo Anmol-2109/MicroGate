@@ -21,6 +21,10 @@ public class HeartbeatScheduler {
     @Value("${server.port}")
     private String port;
 
+    @Value("${gateway.base-url}")
+    private String gatewayBaseUrl;
+
+
     @Scheduled(fixedRate = 15000)
     public void sendHeartbeat() {
 
@@ -32,7 +36,7 @@ public class HeartbeatScheduler {
                     );
 
             restTemplate.postForObject(
-                    "http://localhost:8080/services/heartbeat",
+                    gatewayBaseUrl + "/services/heartbeat",
                     request,
                     Void.class
             );

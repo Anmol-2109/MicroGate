@@ -9,3 +9,22 @@ spring:
     redis:
       host: redis
       port: 6379
+
+
+  ports:
+    - "9411:9411"
+
+service:
+  host: userservice
+
+gateway:
+  base-url: http://gateway:8080
+
+server:
+  port: ${SERVER_PORT:8083}
+
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans

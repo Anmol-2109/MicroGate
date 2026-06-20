@@ -21,6 +21,12 @@ services:
     ports:
       - "6379:6379"
 
+  zipkin:
+    image: openzipkin/zipkin
+
+    ports:
+      - "9411:9411"
+
   gateway:
     build: ./GatewayApplication
 
@@ -32,6 +38,8 @@ services:
 
     depends_on:
       - mysql
+      - redis
+      - zipkin
 
   userservice:
     build: ./userservice
@@ -45,18 +53,72 @@ services:
     depends_on:
       - mysql
       - redis
+      - zipkin
 
-  mock1:
+  mock1a:
     build: ./mock-service1
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SERVER_PORT: 8081
 
     ports:
       - "8081:8081"
 
+    depends_on:
+      - zipkin
+
+  mock1b:
+    build: ./mock-service1
+
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SERVER_PORT: 8082
+
+    ports:
+      - "8082:8082"
+
+    depends_on:
+      - zipkin
+
+
+
   mock2:
     build: ./mock-service2
 
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
     ports:
       - "8091:8091"
+
+    depends_on:
+      - zipkin
+
+  prometheus:
+    image: prom/prometheus
+
+    ports:
+      - "9090:9090"
+
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+    depends_on:
+      - gateway
+      - userservice
+      - mock1a
+      - mock1b
+      - mock2
+
+  grafana:
+    image: grafana/grafana
+
+    ports:
+        - "3001:3000"
+
+    depends_on:
+        - prometheus
 
 volumes:
   mysql_data:

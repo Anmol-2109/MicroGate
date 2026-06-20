@@ -1,0 +1,31 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+
+  - job_name: gateway
+    metrics_path: /actuator/prometheus
+
+    static_configs:
+      - targets:
+          - gateway:8080
+
+  - job_name: userservice
+    metrics_path: /actuator/prometheus
+
+    static_configs:
+      - targets:
+          - userservice:8083
+
+  - job_name: mock1
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          - mock1a:8081
+          - mock1b:8082
+
+  - job_name: mock2
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets:
+          - mock2:8091

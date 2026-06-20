@@ -1,0 +1,13 @@
+service:
+  host: mock2
+
+gateway:
+  base-url: http://gateway:8080
+
+server:
+  port: ${SERVER_PORT:8091}
+
+management:
+  zipkin:
+    tracing:
+      endpoint: http://zipkin:9411/api/v2/spans
