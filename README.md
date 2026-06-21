@@ -148,6 +148,29 @@ MicroGate was built to understand and implement the core infrastructure componen
 
 ---
 
+# Screenshots
+
+## Grafana Dashboard Overview
+
+![Grafana Dashboard 1](docs/Grafana/dashboard-overview1.png)
+![Grafana Dashboard 2](docs/Grafana/dashboard-overview2.png)
+![Grafana Dashboard 3](docs/Grafana/dashboard-overview3.png)
+
+---
+
+## Zipkin Dependency Graph
+
+![Zipkin Dependency Overview](docs/Zipkin/dependency-overview.png)
+
+---
+
+## Distributed Trace Example 1
+
+![Zipkin Trace 1](docs/Zipkin/distributed-trace-1.png)
+![Zipkin Trace 2](docs/Zipkin/distributed-trace-2.png)
+
+---
+
 # Dockerized Deployment
 
 The entire platform can be started using Docker Compose.
@@ -342,28 +365,6 @@ Gateway validates JWT before forwarding requests.
 
 ---
 
-# Screenshots
-
-## Grafana Dashboard Overview
-
-![Grafana Dashboard 1](docs/Grafana/dashboard-overview1.png)
-![Grafana Dashboard 2](docs/Grafana/dashboard-overview2.png)
-![Grafana Dashboard 3](docs/Grafana/dashboard-overview3.png)
-
----
-
-## Zipkin Dependency Graph
-
-![Zipkin Dependency Overview](docs/Zipkin/dependency-overview.png)
-
----
-
-## Distributed Trace Example 1
-
-![Zipkin Trace 1](docs/Zipkin/distributed-trace-1.png)
-![Zipkin Trace 2](docs/Zipkin/distributed-trace-2.png)
-
----
 
 # Author
 
