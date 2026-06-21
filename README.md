@@ -118,33 +118,13 @@ MicroGate was built to understand and implement the core infrastructure componen
 
 # Tech Stack
 
-## Backend
-
-- Java 21
-- Spring Boot 3
-- Spring WebFlux
-- Spring Security
-- Spring Data JPA
-- Hibernate
-
-## Database
-
-- MySQL 8
-
-## Cache
-
-- Redis 7
-
-## Monitoring
-
-- Prometheus
-- Grafana
-- Zipkin
-
-## Containerization
-
-- Docker
-- Docker Compose
+| Category | Technologies |
+|----------|-------------|
+| Backend | Java 21, Spring Boot 3, Spring WebFlux, Spring Security, Spring Data JPA, Hibernate |
+| Database | MySQL 8 |
+| Cache | Redis 7 |
+| Monitoring & Observability | Prometheus, Grafana, Zipkin |
+| Containerization | Docker, Docker Compose |
 
 ---
 
@@ -164,7 +144,7 @@ MicroGate was built to understand and implement the core infrastructure componen
 
 ---
 
-## Distributed Trace Example 1
+## Distributed Trace Example
 
 ![Zipkin Trace 1](docs/Zipkin/distributed-trace-1.png)
 ![Zipkin Trace 2](docs/Zipkin/distributed-trace-2.png)
