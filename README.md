@@ -132,22 +132,22 @@ MicroGate was built to understand and implement the core infrastructure componen
 
 ## Grafana Dashboard Overview
 
-![Grafana Dashboard 1](docs/Grafana/dashboard-overview1.png)
-![Grafana Dashboard 2](docs/Grafana/dashboard-overview2.png)
-![Grafana Dashboard 3](docs/Grafana/dashboard-overview3.png)
+![Grafana Dashboard 1](docs/Grafana/dashboard-overview1-v2.png)
+![Grafana Dashboard 2](docs/Grafana/dashboard-overview2-v2.png)
+![Grafana Dashboard 3](docs/Grafana/dashboard-overview3-v2.png)
 
 ---
 
 ## Zipkin Dependency Graph
 
-![Zipkin Dependency Overview](docs/Zipkin/dependency-overview.png)
+![Zipkin Dependency Overview](docs/Zipkin/dependency-overview-v2.png)
 
 ---
 
 ## Distributed Trace Example
 
-![Zipkin Trace 1](docs/Zipkin/distributed-trace-1.png)
-![Zipkin Trace 2](docs/Zipkin/distributed-trace-2.png)
+![Zipkin Trace 1](docs/Zipkin/distributed-trace-1-v2.png)
+![Zipkin Trace 2](docs/Zipkin/distributed-trace-2-v2.png)
 
 ---
 
